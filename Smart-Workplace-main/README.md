@@ -1,158 +1,291 @@
-# Hands-free HCI for Smarter Workspaces
+# Hands-free Human–Computer Interaction for Smarter Workspaces
 
-Smart Workplace is an AI-powered productivity suite that combines voice-controlled application management with PowerPoint and Whiteboard integration.
+An AI-powered Human–Computer Interaction (HCI) system that enables users to interact with computers using **voice commands**, **hand gestures**, and **computer vision**, eliminating the need for traditional input devices such as keyboards and mice.
+
+The project integrates a virtual AI assistant, gesture-controlled presentation system, and intelligent virtual whiteboard into a unified desktop application for touch-free productivity.
+
+---
 
 ## Features
 
-### Nova AI Assistant
-- Voice command support for launching and controlling applications
-- Seamless integration with PowerPoint and Whiteboard
-- Natural language processing for application control
-- Process management and monitoring
-- Voice-activated commands for presentations and whiteboard sessions
+### 🎙️ Nova AI Assistant
+- Voice-controlled desktop assistant
+- Launch and terminate applications
+- Open websites and perform Google searches
+- Location search using Google Maps
+- File and folder navigation
+- Take screenshots
+- Clipboard operations
+- Voice and text-based interaction
+- System command execution
 
-### PowerPoint Integration
-- Launch PowerPoint presentations using voice commands
-- Navigate through slides using voice control
-- Close presentations with voice commands
-- Process monitoring and management
+### 🖐️ Gesture-Controlled Presentation
+- Hands-free PowerPoint slide navigation
+- Virtual laser pointer
+- Slide annotation
+- Annotation erase functionality
+- Webcam overlay support
+- Fullscreen presentation mode
 
-### Whiteboard Integration
-- Launch Microsoft Whiteboard using voice commands
-- Control whiteboard sessions through voice
-- Efficient process management for whiteboard sessions
+### 🎨 Smart Virtual Whiteboard
+- Air drawing using hand gestures
+- Multiple drawing colors
+- Eraser tool
+- Shape recognition
+- OCR-based handwriting recognition
+- Real-time drawing smoothing
+- Interactive canvas interface
 
+---
 
-## Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/Janavikachi/Smart-Workplace.git
-cd Smart-Workplace
-```
-
-2. Create a virtual environment:
-```bash
-python -m venv venv
-```
-
-3. Activate the virtual environment:
-```bash
-.\venv\Scripts\activate
-```
-
-4. Install Python dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-## OCR Setup Instructions
-
-To use the Optical Character Recognition (OCR) feature in the whiteboard, you need to install Tesseract OCR:
-
-### Windows Installation:
-
-1. Download Tesseract OCR:
-   - Go to https://github.com/UB-Mannheim/tesseract/wiki
-   - Download the latest installer (e.g., `tesseract-ocr-w64-setup-5.3.1.20230401.exe` for 64-bit Windows)
-
-2. Install Tesseract:
-   - Run the downloaded installer
-   - Choose the installation directory (default is usually `C:\Program Files\Tesseract-OCR`)
-   - **Important**: Remember the installation path
-
-3. Add Tesseract to System PATH:
-   - Open Windows Search and type "Environment Variables"
-   - Click "Edit the system environment variables"
-   - Click "Environment Variables" button
-   - Under "System Variables", find and select "Path"
-   - Click "Edit"
-   - Click "New"
-   - Add the Tesseract installation path (e.g., `C:\Program Files\Tesseract-OCR`)
-   - Click "OK" on all windows
-
-4. Verify Installation:
-   - Open a new Command Prompt
-   - Type `tesseract --version`
-   - If you see version information, the installation was successful
-
-### Troubleshooting OCR:
-
-1. If `tesseract` command is not recognized:
-   - Double-check that you added the correct path to System PATH
-   - Try restarting your computer
-   - Verify the installation by checking if the Tesseract folder exists in Program Files
-
-2. If OCR is not working in the application:
-   - Make sure Tesseract is properly installed and in PATH
-   - Check if the Python package `pytesseract` is installed
-   - Ensure you have proper permissions to access the Tesseract installation
-
-3. For better OCR results:
-   - Ensure good lighting when using the whiteboard
-   - Write clearly and legibly
-   - Use contrasting colors (dark text on light background)
-   - Keep the text size reasonable
-
-## Directory Structure
+## Project Architecture
 
 ```
-smart-workplace/
+                     Nova AI Assistant
+          (Speech Recognition + Desktop Automation)
+                          │
+          ┌───────────────┴───────────────┐
+          │                               │
+ Gesture-Controlled Presentation    Smart Virtual Whiteboard
+     (Computer Vision)           (Drawing + OCR + Shape Detection)
+```
+
+---
+
+## Technology Stack
+
+### Programming Language
+- Python
+
+### Computer Vision
+- OpenCV
+- MediaPipe
+- cvzone
+
+### Artificial Intelligence
+- TensorFlow
+- SpeechRecognition
+- Tesseract OCR
+
+### Desktop Automation
+- PyAutoGUI
+- pynput
+- psutil
+- subprocess
+
+### GUI
+- Eel
+- Tkinter
+
+### Supporting Libraries
+- NumPy
+- pyttsx3
+- Wikipedia API
+
+### Development Tools
+- VS Code
+- Git
+- GitHub
+
+---
+
+## Project Modules
+
+### 1. Nova AI Assistant
+
+Nova serves as the central controller of the system.
+
+It continuously listens for voice commands and performs desktop automation tasks such as:
+
+- Opening applications
+- Launching the presentation module
+- Launching the virtual whiteboard
+- Web searches
+- File management
+- Location search
+- Voice responses
+- Application shutdown
+
+The assistant provides both voice and text-based interaction through an Eel-powered graphical interface.
+
+---
+
+### 2. Gesture-Controlled Presentation
+
+This module allows users to control PowerPoint presentations entirely through hand gestures.
+
+Supported interactions include:
+
+- Next slide
+- Previous slide
+- Laser pointer
+- Slide annotation
+- Erasing annotations
+- Webcam controls
+
+Hand tracking is performed using MediaPipe landmarks while OpenCV processes the camera feed in real time.
+
+---
+
+### 3. Smart Virtual Whiteboard
+
+The whiteboard enables users to draw in the air using hand gestures.
+
+Features include:
+
+- Real-time drawing
+- Smooth handwriting
+- Shape recognition
+- OCR-based handwriting extraction
+- Multiple drawing colors
+- Eraser
+- Canvas management
+
+Recognized geometric shapes include:
+
+- Circle
+- Rectangle
+- Square
+- Triangle
+- Straight Line
+
+---
+
+## OCR Pipeline
+
+The project extracts handwritten text from the virtual whiteboard using Tesseract OCR.
+
+Image preprocessing includes:
+
+- Grayscale conversion
+- Binary thresholding
+- Dilation
+- Erosion
+
+These preprocessing steps improve OCR accuracy before text extraction.
+
+---
+
+## Workflow
+
+1. User issues a voice command or performs a hand gesture.
+2. Nova processes speech commands using SpeechRecognition.
+3. MediaPipe detects hand landmarks from webcam frames.
+4. OpenCV interprets gestures and maps them to system actions.
+5. OCR extracts handwritten text from the whiteboard.
+6. Desktop automation modules execute the requested task.
+
+---
+
+## Challenges Addressed
+
+- Real-time hand tracking
+- Gesture stability and smoothing
+- Voice recognition responsiveness
+- Multi-process application management
+- OCR preprocessing for improved recognition
+- Shape detection using contour analysis
+- Coordinate mapping between webcam and presentation canvas
+- Desktop automation through voice commands
+
+---
+
+## Applications
+
+- Smart Classrooms
+- Online Teaching
+- Business Presentations
+- Accessibility Solutions
+- Touch-free Workstations
+- Collaborative Workspaces
+- Interactive Learning Environments
+
+---
+
+## Future Improvements
+
+- Offline speech recognition
+- Deep learning-based gesture classification
+- Multi-user gesture recognition
+- Custom gesture training
+- Cloud synchronization
+- Multilingual voice assistant
+- Gesture personalization
+- Cross-platform compatibility
+
+---
+
+## Repository Structure
+
+```
+SMART-WORKPLACE-MAIN/
+│
 ├── Nova/
-│   ├── nova.py                 # Main AI assistant script
-│   └── run_nova.bat           # Windows batch file to run Nova
-├── PowerPoint/                 # PowerPoint integration module
-├── whiteboard/                # Whiteboard integration module
+│   ├── nova.py
+│   ├── integrations.py
+│   ├── web/
+│   └── README.md
+│
+├── PowerPoint Presentation/
+│   ├── main.py
+│   └── Slides/
+│
+├── whiteboard/
+│   ├── VirtualPainter.py
+│   ├── HandTrackingModule.py
+│   └── README.md
+│
+├── main.py
 ├── requirements.txt
 └── README.md
 ```
 
-## Module Usage Instructions
+---
 
-### 1. Nova AI Assistant (Nova/nova.py)
-- Start Nova using `run_nova.bat` or `python nova.py`
-- Available voice commands:
-  - "Launch PowerPoint" - Opens PowerPoint
-  - "Close PowerPoint" - Closes PowerPoint
-  - "Launch Whiteboard" - Opens Whiteboard
-  - "Close Whiteboard" - Closes Whiteboard
-  - "Stop Nova" - Terminates the AI assistant
+## Installation
 
-### 2. PowerPoint Integration (PowerPoint/)
-- Ensures proper communication between Nova and PowerPoint
-- Handles process management for PowerPoint applications
-- Manages presentation states and commands
+### Clone the repository
 
-### 3. Whiteboard Integration (whiteboard/)
-- Manages communication between Nova and Microsoft Whiteboard
-- Handles process management for Whiteboard sessions
-- Controls whiteboard states and commands
+```bash
+git clone https://github.com/yourusername/Hands-Free-HCI.git
+cd Hands-Free-HCI
+```
 
-## Voice Commands Reference
+### Install dependencies
 
-1. PowerPoint Commands:
-   - "Launch PowerPoint" - Starts PowerPoint application
-   - "Close PowerPoint" - Closes active PowerPoint instance
-   - "Next slide" - Moves to next slide
-   - "Previous slide" - Moves to previous slide
+```bash
+pip install -r requirements.txt
+```
 
-2. Whiteboard Commands:
-   - "Launch Whiteboard" - Opens Microsoft Whiteboard
-   - "Close Whiteboard" - Closes active Whiteboard session
+### Install Tesseract OCR
 
-3. System Commands:
-   - "Stop Nova" - Terminates the AI assistant
-   - "Status" - Reports current application states
+Download and install Tesseract OCR:
 
-## Troubleshooting
+https://github.com/tesseract-ocr/tesseract
 
-1. Voice Recognition Issues:
-   - Ensure you're in a quiet environment
-   - Speak clearly and at a moderate pace
-   - Check microphone settings in Windows
+Ensure the executable is added to your system PATH.
 
-2. Application Launch Issues:
-   - Verify PowerPoint and Whiteboard are properly installed
-   - Check process management permissions
-   - Ensure no conflicting applications are running
- 
+---
+
+## Run
+
+```bash
+python main.py
+```
+
+---
+
+## Research Publication
+
+This project was presented as a research paper:
+
+**Hands-Free Human–Computer Interaction for Smarter Workspaces**
+
+The work explores multimodal human–computer interaction by integrating computer vision, speech recognition, OCR, and desktop automation into a unified hands-free workspace system.
+
+
+---
+
+## License
+
+This project is intended for educational and research purposes.
