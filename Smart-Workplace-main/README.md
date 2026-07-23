@@ -1,4 +1,4 @@
-# Smart Workplace
+# Hands-free HCI for Smarter Workspaces
 
 Smart Workplace is an AI-powered productivity suite that combines voice-controlled application management with PowerPoint and Whiteboard integration.
 
