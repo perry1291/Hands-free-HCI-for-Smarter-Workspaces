@@ -247,7 +247,7 @@ SMART-WORKPLACE-MAIN/
 ### Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/Hands-Free-HCI.git
+git clone https://github.com/perry1291/Hands-free-HCI-for-Smarter-Workspaces.git
 cd Hands-Free-HCI
 ```
 
@@ -272,5 +272,3 @@ Ensure the executable is added to your system PATH.
 ```bash
 python main.py
 ```
-
----
