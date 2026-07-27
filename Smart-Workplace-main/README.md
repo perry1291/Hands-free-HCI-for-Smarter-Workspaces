@@ -274,18 +274,3 @@ python main.py
 ```
 
 ---
-
-## Research Publication
-
-This project was presented as a research paper:
-
-**Hands-Free Human–Computer Interaction for Smarter Workspaces**
-
-The work explores multimodal human–computer interaction by integrating computer vision, speech recognition, OCR, and desktop automation into a unified hands-free workspace system.
-
-
----
-
-## License
-
-This project is intended for educational and research purposes.
