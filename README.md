@@ -21,7 +21,6 @@ The project integrates a virtual AI assistant, gesture-controlled presentation s
 
 ### 🖐️ Gesture-Controlled Presentation
 - Hands-free PowerPoint slide navigation
-- Virtual laser pointer
 - Slide annotation
 - Annotation erase functionality
 - Webcam overlay support
@@ -81,12 +80,6 @@ The project integrates a virtual AI assistant, gesture-controlled presentation s
 - NumPy
 - pyttsx3
 - Wikipedia API
-
-### Development Tools
-- VS Code
-- Git
-- GitHub
-
 ---
 
 ## Project Modules
