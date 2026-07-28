@@ -1,6 +1,6 @@
 # Hands-free Human–Computer Interaction for Smarter Workspaces
 
-An AI-powered Human–Computer Interaction (HCI) system that enables users to interact with computers using **voice commands**, **hand gestures**, and **computer vision**, eliminating the need for traditional input devices such as keyboards and mice.
+An AI-powered Human–Computer Interaction (HCI) system that enables users to interact with computers using **voice commands**, **hand gestures**, and **computer vision**, eliminating the need for traditional input devices such as keyboard and mouse.
 
 The project integrates a virtual AI assistant, gesture-controlled presentation system, and intelligent virtual whiteboard into a unified desktop application for touch-free productivity.
 
